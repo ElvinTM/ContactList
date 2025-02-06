@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit manager</title>
+</head>
+<body>
+<h1>Edit manager</h1>
+<table>
+    <form th:object="${contact}" th:action="${'/contact/edit/' + contact.id}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label>Name:</label>
+        <label>
+            <input type="text" th:field="*{name}">
+        </label>
+        <br>
+        <label>Number:</label>
+        <label>
+            <input type="text" th:field="*{number}">
+        </label>
+        <br>
+        <button type="submit">Save</button>
+    </form>
+</table>
+</body>
+</html>

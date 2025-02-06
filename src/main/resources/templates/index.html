@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contacts Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<style>
+    .navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .navbar1 {
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    }
+
+    .button {
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    }
+
+    .buttonGreen {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    }
+
+    .buttonGreen:hover {
+    background-color: #4CAF50;
+    color: white;
+    }
+
+    .buttonBlu {
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    }
+
+    .buttonBlu:hover {
+    background-color: #008CBA;
+    color: white;
+    }
+
+    .buttonRed {
+    background-color: white;
+    color: black;
+    border: 2px solid #ff0000;
+    }
+
+    .buttonRed:hover {
+    background-color: #ff0000;
+    color: white;
+    }
+</style>
+
+<body>
+<h1>Contacts Manager</h1>
+<a class="button buttonGreen" href="/contact/create">Create</a>
+<table>
+    <tr>
+        <th class="navbar navbar1">ID</th>
+        <th class="navbar navbar1">Name</th>
+        <th class="navbar navbar1">Number</th>
+    </tr>
+    <tr th:each="contact : ${contact}">
+        <td th:text="${contact.id}"></td>
+        <td th:text="${contact.name}"></td>
+        <td th:text="${contact.number}"></td>
+        <td>
+            <a class="button buttonBlu" th:href="@{/contact/edit/{id}(id=${contact.id})}">Edit</a>
+            <a class="button buttonRed" th:href="@{/contact/delete/{id}(id=${contact.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
